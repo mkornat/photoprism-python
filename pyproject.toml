@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "photoprism"
+version = "0.1.0"
+description = ""
+authors = ["Marcin Kornat <marcin.kornat@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.8.2"
+aiohttp = {version = "^3.10.5", extras = ["speedups"]}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

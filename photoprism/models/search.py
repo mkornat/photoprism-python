@@ -32,3 +32,21 @@ class Album(BaseModel):
     uid: str = Field("", alias="UID")
     updated_at: datetime = Field(alias="UpdatedAt")
     year: int = Field(alias="Year")
+
+
+class Label(BaseModel):
+    id: int = Field(alias="ID")
+    uid: str = Field("", alias="UID")
+    thumb: str = Field("", alias="Thumb")
+    thumb_src: str = Field("", alias="ThumbSrc")
+    slug: str = Field("", alias="Slug")
+    custom_slug: str = Field("", alias="CustomSlug")
+    name: str = Field("", alias="Name")
+    priority: int = Field(alias="Priority")
+    favorite: bool = Field(alias="Favorite")
+    description: str = Field("", alias="Description")
+    notes: str = Field("", alias="Notes")
+    photo_count: int = Field(alias="PhotoCount")
+    created_at: datetime = Field("", alias="CreatedAt")
+    updated_at: datetime = Field("", alias="UpdatedAt")
+    deleted_at: datetime | None = Field(None, alias="DeletedAt")

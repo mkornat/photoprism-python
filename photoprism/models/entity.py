@@ -87,3 +87,21 @@ class Link(BaseModel):
     created_at: datetime = Field(alias="CreatedAt")
     modified_at: datetime = Field(alias="ModifiedAt")
 
+
+class Label(BaseModel):
+    id: int = Field(alias="ID")
+    uid: str = Field(alias="UID")
+    slug: str = Field(alias="Slug")
+    custom_slug: str = Field(alias="CustomSlug")
+    name: str = Field(alias="Name")
+    priority: int = Field(alias="Priority")
+    favorite: bool = Field(alias="Favorite")
+    description: str = Field(alias="Description")
+    notes: str = Field(alias="Notes")
+    photo_count: int = Field(alias="PhotoCount")
+    thumb: str = Field(alias="Thumb")
+    thumb_src: str = Field(alias="ThumbSrc")
+    created_at: datetime = Field(alias="CreatedAt")
+    updated_at: datetime = Field(alias="UpdatedAt")
+    published_at: datetime = Field(alias="PublishedAt")
+    deleted_at: datetime = Field(alias="DeletedAt")

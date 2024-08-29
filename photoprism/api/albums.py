@@ -61,7 +61,7 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
             path="albums/{}".format(album_uid),
         )
 
-    async def delete_many(self, album_uids: list[str]) -> None:
+    async def batch_delete(self, album_uids: list[str]) -> None:
         selection_data = form.Selection(
             albums=album_uids,
         )

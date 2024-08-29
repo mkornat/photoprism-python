@@ -37,3 +37,21 @@ class Selection(BaseModel):
     labels: list[str] | None = None
     places: list[str] | None = None
     subjects: list[str] | None = None
+
+
+class SearchLabels(BaseModel):
+    count: int
+    q: str | None = None
+    uid: str | None = None
+    slug: str | None = None
+    name: str | None = None
+    all: bool | None = None
+    favorite: bool | None = None
+    offset: int | None = None
+    order: str | None = None
+
+
+class Label(BaseModel):
+    name: str = Field(serialization_alias="Name")
+    priority: str = Field(serialization_alias="Priority", default=None)
+    uncertainty: str = Field(serialization_alias="Uncertainty", default=None)

@@ -6,11 +6,11 @@ from photoprism.models import form, search, entity, query
 
 
 class PhotoprismLabelsApi(PhotoprismApiBase):
-    async def search(self, query: form.SearchLabels) -> list[search.Label]:
+    async def search(self, search_labels: form.SearchLabels) -> list[search.Label]:
         data = await self._session.req(
             method='GET',
             path='labels',
-            params=query.model_dump()
+            params=search_labels.model_dump()
         )
         return [search.Label(**item) for item in data]
 

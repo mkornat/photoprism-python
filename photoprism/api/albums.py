@@ -11,7 +11,7 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
             count: int,
             offset: int | None = None,
             order: Literal["favorites", "name", "title", "added", "edited"] | None = None,
-            query: str | None = None,
+            q: str | None = None,
     ) -> list[search.Album]:
         data = await self._session.req(
             method="GET",
@@ -20,7 +20,7 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
                 "count": count,
                 "offset": offset,
                 "order": order,
-                "q": query,
+                "q": q,
             }
         )
         return [search.Album(**item) for item in data]

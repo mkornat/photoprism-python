@@ -1,6 +1,7 @@
 from photoprism.api.albums import PhotoprismAlbumsApi
 from photoprism.api.config import PhotoprismConfigApi
 from photoprism.api.labels import PhotoprismLabelsApi
+from photoprism.api.photos import PhotoprismPhotosApi
 from photoprism.session import PhotoprismSession
 
 
@@ -19,3 +20,7 @@ class PhotoprismClient:
     @property
     def labels(self) -> PhotoprismLabelsApi:
         return PhotoprismLabelsApi(self._session)
+
+    @property
+    def photos(self) -> PhotoprismPhotosApi:
+        return PhotoprismPhotosApi(self._session)

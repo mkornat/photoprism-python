@@ -97,10 +97,7 @@ class PhotoprismPhotosApi(PhotoprismApiBase):
         return entity.Photo(**data)
 
     async def download(
-        self,
-        photo_uid: str,
-        file_dir: Path,
-        filename: str | None = None
+        self, photo_uid: str, file_dir: Path, filename: str | None = None
     ) -> Path:
         return await self._session.req(
             method="GET",
@@ -180,5 +177,3 @@ class PhotoprismPhotosApi(PhotoprismApiBase):
             path="batch/photos/archive",
             data=selection.model_dump(exclude_none=True),
         )
-
-

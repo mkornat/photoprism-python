@@ -1,15 +1,39 @@
 [tool.poetry]
 name = "photoprism"
 version = "0.1.0"
-description = ""
+description = "Photoprism Python API Client "
 authors = ["Marcin Kornat <marcin.kornat@gmail.com>"]
 readme = "README.md"
+license = "MIT"
+repository = "https://github.com/mkornat/photoprism-python"
+keywords = [
+    "photoprism"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 pydantic = "^2.8.2"
 aiohttp = {version = "^3.10.5", extras = ["speedups"]}
 
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.3"
+pre-commit = "^3.8.0"
 
 [build-system]
 requires = ["poetry-core"]

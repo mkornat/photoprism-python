@@ -1,10 +1,9 @@
 import asyncio
-from enum import StrEnum
 from pathlib import Path
-from typing import Any, Literal, overload, reveal_type, Mapping
+from typing import Any, Literal, overload, Mapping
 
 import aiohttp
-from aiohttp import ClientTimeout, ClientResponse
+from aiohttp import ClientTimeout
 from yarl import URL
 
 from photoprism.exceptions import (
@@ -59,8 +58,7 @@ class PhotoprismSession:
         filename: None = None,
         timeout: float | None = None,
         include_auth_token: bool = True,
-    ) -> dict[str, Any] | list[dict[str, Any]]:
-        ...
+    ) -> dict[str, Any] | list[dict[str, Any]]: ...
 
     @overload
     async def req(
@@ -75,8 +73,7 @@ class PhotoprismSession:
         method: Literal["GET", "POST", "PUT", "DELETE"] = "GET",
         timeout: float | None = None,
         include_auth_token: bool = True,
-    ) -> Path:
-        ...
+    ) -> Path: ...
 
     async def req(
         self,
@@ -106,9 +103,7 @@ class PhotoprismSession:
             params["t"] = await self.get_download_token()
         elif mode == "PREVIEW":
             params["t"] = await self.get_preview_token()
-        cleaned_params = {
-            p_k: p_v for p_k, p_v in params.items() if p_v is not None
-        }
+        cleaned_params = {p_k: p_v for p_k, p_v in params.items() if p_v is not None}
         url = URL(self._url).join(URL(path)).update_query(cleaned_params)
         try:
             async with self._session.request(
@@ -149,9 +144,7 @@ class PhotoprismSession:
             raise PhotoprismError(exc) from exc
 
     def determine_filename(self, headers: Mapping[str, str]) -> str:
-        header_filename = (
-            headers["Content-Disposition"].split("; ")[1].split("=")[1]
-        )
+        header_filename = headers["Content-Disposition"].split("; ")[1].split("=")[1]
         # Sometimes the filename in the header is enclosed, sometimes it isn't.
         # This is to account for that.
         if header_filename[0] == '"' and header_filename[-1:] == '"':

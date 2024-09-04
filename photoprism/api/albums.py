@@ -7,11 +7,11 @@ from photoprism.models import search, entity, form, query
 
 class PhotoprismAlbumsApi(PhotoprismApiBase):
     async def filter(
-            self,
-            count: int,
-            offset: int | None = None,
-            order: Literal["favorites", "name", "title", "added", "edited"] | None = None,
-            q: str | None = None,
+        self,
+        count: int,
+        offset: int | None = None,
+        order: Literal["favorites", "name", "title", "added", "edited"] | None = None,
+        q: str | None = None,
     ) -> list[search.Album]:
         data = await self._session.req(
             method="GET",
@@ -21,7 +21,7 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
                 "offset": offset,
                 "order": order,
                 "q": q,
-            }
+            },
         )
         return [search.Album(**item) for item in data]
 
@@ -39,15 +39,11 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
             data={
                 "Title": title,
                 "Favorite": favorite,
-            }
+            },
         )
         return entity.Album(**data)
 
-    async def update(
-        self,
-        album_uid: str,
-        album_data: form.Album
-    ) -> entity.Album:
+    async def update(self, album_uid: str, album_data: form.Album) -> entity.Album:
         data = await self._session.req(
             method="PUT",
             path="albums/{}".format(album_uid),
@@ -72,13 +68,9 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
         )
 
     async def clone(
-        self,
-        source_album_uids: list[str],
-        destination_album_uid: str
+        self, source_album_uids: list[str], destination_album_uid: str
     ) -> entity.Album:
-        selection_data = form.Selection(
-            albums=source_album_uids
-        )
+        selection_data = form.Selection(albums=source_album_uids)
         data = await self._session.req(
             method="POST",
             path="albums/{}/clone".format(destination_album_uid),
@@ -170,7 +162,7 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
             albums=albums,
             labels=labels,
             places=places,
-            subjects=subjects
+            subjects=subjects,
         )
         data = await self._session.req(
             method="POST",
@@ -224,4 +216,3 @@ class PhotoprismAlbumsApi(PhotoprismApiBase):
             filename=filename,
             mode="DOWNLOAD",
         )
-

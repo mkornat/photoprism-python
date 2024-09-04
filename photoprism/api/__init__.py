@@ -6,3 +6,15 @@ from photoprism.api.files import PhotoprismFilesApi
 from photoprism.api.errors import PhotoprismErrorsApi
 from photoprism.api.faces import PhotoprismFacesApi
 from photoprism.api.library import PhotoprismLibraryApi
+
+
+__all__ = [
+    "PhotoprismConfigApi",
+    "PhotoprismAlbumsApi",
+    "PhotoprismLabelsApi",
+    "PhotoprismPhotosApi",
+    "PhotoprismFilesApi",
+    "PhotoprismErrorsApi",
+    "PhotoprismFacesApi",
+    "PhotoprismLibraryApi",
+]

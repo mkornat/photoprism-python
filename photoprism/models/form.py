@@ -161,7 +161,9 @@ class Photo(BaseModel):
     title: str | None = Field(serialization_alias="Title", default=None)
     title_src: str | None = Field(serialization_alias="TitleSrc", default=None)
     description: str | None = Field(serialization_alias="Description", default=None)
-    description_src: str | None = Field(serialization_alias="DescriptionSrc", default=None)
+    description_src: str | None = Field(
+        serialization_alias="DescriptionSrc", default=None
+    )
     details: Details | None = Field(serialization_alias="Details", default=None)
     stack: int | None = Field(serialization_alias="Stack", default=None)
     favorite: bool | None = Field(serialization_alias="Favorite", default=None)

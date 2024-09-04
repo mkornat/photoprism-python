@@ -1,5 +1,4 @@
 from pathlib import Path
-from pprint import pprint
 
 from photoprism.api.base import PhotoprismApiBase
 from photoprism.models import form, search, entity, query
@@ -8,9 +7,7 @@ from photoprism.models import form, search, entity, query
 class PhotoprismLabelsApi(PhotoprismApiBase):
     async def search(self, search_labels: form.SearchLabels) -> list[search.Label]:
         data = await self._session.req(
-            method='GET',
-            path='labels',
-            params=search_labels.model_dump()
+            method="GET", path="labels", params=search_labels.model_dump()
         )
         return [search.Label(**item) for item in data]
 

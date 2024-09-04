@@ -13,10 +13,7 @@ class PhotoprismFilesApi(PhotoprismApiBase):
         return entity.File(**data)
 
     async def download(
-        self,
-        file_hash: str,
-        file_dir: Path,
-        filename: str | None = None
+        self, file_hash: str, file_dir: Path, filename: str | None = None
     ) -> Path:
         return await self._session.req(
             method="GET",
@@ -68,10 +65,7 @@ class PhotoprismFilesApi(PhotoprismApiBase):
         return entity.Photo(**data)
 
     async def update_orientation(
-        self,
-        photo_uid: str,
-        file_uid: str,
-        orientation: int
+        self, photo_uid: str, file_uid: str, orientation: int
     ) -> entity.Photo:
         orientation_data = form.File(orientation=orientation)
         data = await self._session.req(

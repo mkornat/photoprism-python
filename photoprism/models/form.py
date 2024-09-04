@@ -184,3 +184,7 @@ class Photo(BaseModel):
     camera_src: str | None = Field(serialization_alias="CameraSrc", default=None)
     lend_id: int | None = Field(serialization_alias="LendID", default=None)
     original_name: str | None = Field(serialization_alias="OriginalName", default=None)
+
+
+class File(BaseModel):
+    orientation: int = Field(serialization_alias="Orientation")

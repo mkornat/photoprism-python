@@ -188,3 +188,26 @@ class Photo(BaseModel):
 
 class File(BaseModel):
     orientation: int = Field(serialization_alias="Orientation")
+
+
+class SearchFaces(BaseModel):
+    count: int
+    offset: int | None = None
+    order: str | None = None
+    q: str | None = None
+    uid: str | None = None
+    subject: str | None = None
+    unknown: str | None = None
+    hidden: str | None = None
+    markers: bool | None = None
+
+
+class Face(BaseModel):
+    hidden: bool | None = Field(serialization_alias="Hidden", default=None)
+    subj_uid: str | None = Field(serialization_alias="SubjUID", default=None)
+
+
+class IndexOptions(BaseModel):
+    path: str | None = None
+    rescan: bool | None = None
+    cleanup: bool | None = None

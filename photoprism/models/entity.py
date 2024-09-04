@@ -280,3 +280,25 @@ class Photo(BaseModel):
     checked_at: datetime = Field(alias="CheckedAt")
     estimated_at: datetime | None = Field(None, alias="EstimatedAt")
     deleted_at: datetime | None = Field(None, alias="DeletedAt")
+
+
+class Error(BaseModel):
+    id: int = Field(alias="ID")
+    time: datetime = Field(alias="Time")
+    level: str = Field(alias="Level")
+    message: str = Field(alias="Message")
+
+
+class Face(BaseModel):
+    id: str = Field(alias="ID")
+    src: str = Field(alias="Src")
+    kind: int = Field(alias="Kind")
+    hidden: bool = Field(alias="Hidden")
+    subj_uid: str = Field(alias="SubjUID")
+    samples: int = Field(alias="Samples")
+    sample_radius: float = Field(alias="SampleRadius")
+    collisions: int = Field(alias="Collisions")
+    collision_radius: float = Field(alias="CollisionRadius")
+    matched_at: datetime = Field(alias="MatchedAt")
+    created_at: datetime = Field(alias="CreatedAt")
+    updated_at: datetime = Field(alias="UpdatedAt")
